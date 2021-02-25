@@ -1,0 +1,29 @@
+package com.xgj.demo.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+/**
+ * @author gjXia
+ * @date 2021/2/25 14:54
+ */
+@Configuration
+public class WsdServletConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 设置允许跨域的路径
+        registry.addMapping("/**")
+                // 设置允许跨域请求的域名
+                .allowedOrigins("*")
+                // 是否允许证书
+                .allowCredentials(true)
+                // 设置允许的方法
+                .allowedMethods("*")
+                // 设置允许的header属性
+                .allowedHeaders("*")
+                // 跨域允许时间
+                .maxAge(3600);
+    }
+}
